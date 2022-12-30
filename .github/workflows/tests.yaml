@@ -14,7 +14,7 @@ jobs:
       max-parallel: 1
       matrix:
         os: [ubuntu-latest]
-        python-version: [3.10]
+        python-version: [3.9]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -31,8 +31,7 @@ jobs:
 
       - name: Get pip cache dir
         id: pip-cache
-        run: |
-          echo "::set-output name=dir::$(pip cache dir)"
+        run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
 
       - name: pip cache
         uses: actions/cache@v2
@@ -69,7 +68,7 @@ jobs:
       max-parallel: 2
       matrix:
         os: [ubuntu-latest, macos-latest]
-        python-version: [3.10]
+        python-version: [3.9]
 
     runs-on: ${{ matrix.os }}
     steps:
@@ -83,11 +82,6 @@ jobs:
       - name: Upgrade pip
         run: |
           pip install --upgrade --user pip
-
-      - name: Get pip cache dir
-        id: pip-cache
-        run: |
-          echo "::set-output name=dir::$(pip cache dir)"
 
       - name: pip cache
         uses: actions/cache@v2
