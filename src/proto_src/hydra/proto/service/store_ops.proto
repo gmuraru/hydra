@@ -1,0 +1,29 @@
+syntax = "proto3";
+package hydra.service;
+
+import "hydra/proto/tensor/tensor.proto";
+
+service StoreOps {
+  rpc clear(ClearRequest) returns (ClearReply) {}
+  rpc get(GetRequest) returns (GetReply) {}
+  rpc store(StoreRequest) returns (StoreReply) {}
+  rpc view(ViewRequest) returns (ViewReply) {}
+}
+
+message ClearRequest { uint32 client_id = 1; }
+message ClearReply {}
+
+message GetRequest {
+  uint32 client_id = 1;
+  string id = 2;
+}
+message GetReply { tensor.Tensor tensor = 1; }
+
+message StoreRequest {
+  uint32 client_id = 1;
+  tensor.Tensor tensor = 2;
+}
+message StoreReply { string id = 1; }
+
+message ViewRequest { uint32 client_id = 1; }
+message ViewReply { repeated string ids = 1; }

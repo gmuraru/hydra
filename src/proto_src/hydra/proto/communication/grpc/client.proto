@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+package hydra.communication;
+
+message GRPCClient {
+  string ip = 1;
+  string port = 2;
+  uint32 client_id = 3;
+}

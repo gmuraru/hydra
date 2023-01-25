@@ -1,0 +1,13 @@
+syntax = "proto3";
+package hydra.proto.ceva.service;
+
+service ShareTensorOps {
+  rpc compute(ComputeRequest) returns (ComputeReply) {}
+}
+
+message ComputeRequest {
+  string id = 1;
+  string op = 2;
+}
+
+message ComputeReply { string id = 1; }

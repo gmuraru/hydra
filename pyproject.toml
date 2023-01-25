@@ -14,13 +14,14 @@ target-version = ['py310']
 include = '\.pyi?$'
 exclude = '''
 (
-  docs/.*.py
+    src/hydra/proto
+  | docs/.*.py
 )
 '''
 
 [tool.isort]
 profile = "black"
-skip = ["docs"]
+skip = ["docs", "proto"]
 multi_line_output = 3
 include_trailing_comma = true
 force_grid_wrap = 0

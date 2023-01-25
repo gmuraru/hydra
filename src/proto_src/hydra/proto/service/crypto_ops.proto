@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package hydra.crypto;
+
+service CryptoOps {
+  rpc init_przs_generators(InitPRZSGeneratorRequest)
+      returns (InitPRZSGeneratorReply) {}
+}
+
+message InitPRZSGeneratorRequest {}
+message InitPRZSGeneratorReply { bool is_success = 1; }

@@ -47,3 +47,19 @@ Note
 
 This project has been set up using PyScaffold 4.3.1. For details and usage
 information on PyScaffold see https://pyscaffold.org/.
+
+
+DEVELOPMENT
+===
+
+
+Proto
+====
+1. For generating the gRPC services. It could be used also for simple objects like tensors.
+   ```
+   cd src
+   mkdir -p hydra/proto
+   python -m grpc_tools.protoc -Iproto_src --python_out=. --pyi_out=. --grpc_python_out=. proto_src/*/*/*/*.proto
+   ```
+
+   The above will generate the proto files required by the gRPC service and the protobuf schema in the folder "proto"

@@ -34,34 +34,34 @@ class FixedPointEncoder:
         """Initialize FP Encoder.
 
         Args:
-            base (int): The base for the encoder.
-            precision (int): The precision for the encoder.
+            base: The base for the encoder.
+            precision : The precision for the encoder.
         """
         self._precision = precision
         self._base = base
         self._scale = base**precision
 
     def encode(self, value: np.ndarray) -> np.ndarray:
-        """Encode a value using the FixedPoint Encoder.
+        """Encodes a value using the FixedPoint Encoder.
 
         Args:
-            value (np.ndarray): value to encode
+            value: value to encode
 
         Returns:
-            A uint numpy array representing the encoded value
+            Thwe encoded value
         """
         long_value = (value * self._scale).astype(np.uint)
 
         return long_value
 
     def decode(self, value: np.ndarray) -> np.float32:
-        """Decode a value using the FixedPoint Encoder.
+        """Decodes a value using the FixedPoint Encoder.
 
         Args:
-            value (np.ndarray): Value to decode.
+            value: A value to decode.
 
         Returns:
-            A float numpy array representing the decoded tensor.
+            The decoded value.
 
         Raises:
             ValueError: If value is not a numpy uint value
@@ -84,49 +84,34 @@ class FixedPointEncoder:
         return tensor
 
     @property
-    def precision(self):
-        """Get the precision for the FixedPrecision Encoder.
-
-        Returns:
-            int: precision.
-        """
+    def precision(self) -> int:
+        """Returns the precision for the FP Encoder."""
         return self._precision
 
     @precision.setter
     def precision(self, precision: int) -> None:
+        """Sets the precision for the FP Encoder."""
         self._precision = precision
         self._scale = self._base**precision
 
     @property
     def base(self) -> int:
-        """Base for the FixedPrecision Encoder.
-
-        Returns:
-            int: base
-        """
+        """Returns the base for the FP Encoder."""
         return self._base
 
     @base.setter
     def base(self, base: int) -> None:
-
+        """Sets the base for the FP Encoder."""
         self._base = base
         self._scale = base**self._precision
 
     @property
     def scale(self) -> int:
-        """Scale for the FixedPrecision Encoder.
-
-        Returns:
-            int: the scale.
-        """
+        """Returns for the FP Encoder."""
         return self._scale
 
     def __str__(self) -> str:
-        """Representation.
-
-        Returns:
-            str: The representation.
-        """
+        """Returns the string representation for the FP Encoder."""
         type_name = type(self).__name__
         out = f"[{type_name}]: precision: {self._precision}, base: {self._base}"
         return out

@@ -1,0 +1,35 @@
+syntax = "proto3";
+package hydra.service;
+
+import "hydra/proto/context/context.proto";
+
+service ContextOps {
+  rpc reset(ResetRequest) returns (ResetReply) {}
+  rpc init(InitRequest) returns (InitReply) {}
+  rpc setup_przs_generators(SetupPRZSGeneratorsRequest)
+      returns (SetupPRZSGeneratorsReply) {}
+
+  rpc share_secret(ShareSecretRequest) returns (ShareSecretReply) {}
+  rpc generate_przs(GeneratePRZSRequest) returns (GeneratePRZSReply) {}
+}
+
+message ResetRequest {}
+message ResetReply {}
+
+message InitRequest { context.Context context = 1; }
+message InitReply { bool is_success = 1; }
+
+message SetupPRZSGeneratorsRequest { uint32 ctx_id = 1; }
+message SetupPRZSGeneratorsReply { bool is_success = 1; }
+
+message ShareSecretRequest {
+  uint32 ctx_id = 1;
+  string id = 2;
+}
+message ShareSecretReply { repeated string ids = 1; }
+
+message GeneratePRZSRequest {
+  uint32 ctx_id = 1;
+  repeated uint32 shape = 2;
+}
+message GeneratePRZSReply { string id = 1; }

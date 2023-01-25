@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+package hydra.context;
+import "hydra/proto/communication/client.proto";
+
+// This needs to be more generic
+message Context {
+  repeated hydra.communication.Client clients = 1;
+  uint32 rank = 2;
+}

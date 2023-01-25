@@ -1,0 +1,8 @@
+syntax = "proto3";
+
+import "hydra/proto/communication/grpc/client.proto";
+package hydra.communication;
+
+message Client {
+  oneof client { hydra.communication.GRPCClient grpc_client = 1; }
+}

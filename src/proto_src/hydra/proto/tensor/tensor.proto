@@ -1,0 +1,5 @@
+syntax = "proto3";
+
+package hydra.tensor;
+
+message Tensor { bytes data = 1; }

@@ -7,6 +7,9 @@ come in the following weeks.
 # stdlib
 from importlib.metadata import PackageNotFoundError  # pragma: no cover
 from importlib.metadata import version
+import logging
+
+logging.basicConfig(level=logging.INFO)
 
 try:
     # Change here if project is renamed and does not equal the package name
